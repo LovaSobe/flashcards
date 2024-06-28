@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Example</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Flashcard-topia</a>
+      <div >
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Hem</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Mina Quiz</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Bibliotek</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Nytt quiz</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="container-fluid m-3">
+    <div class="row">
+
+      <div class="col-8 p-3 px-5 bg-secondary">
+        <div class="card text-center mb-3">
+          <div class="card-header">
+            Fråga x/z
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          </div>
+        </div>
+
+        <div class="row gap-3">
+          <div class="d-grid col text-center">
+            <button type="button" class="btn btn-lg btn-primary">Vänd kort</button>
+          </div>
+          <div class="col text-center">
+            <button type="button" class="btn btn-lg btn-secondary">Nästa kort</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col p-3 bg-primary">
+        <div class="card" style="width: 18rem;">
+          <div class="card-header">
+            Inställningar
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Ta bort fråga ur lek</li>
+            <li class="list-group-item">Redigera quiz</li>
+            <li class="list-group-item">Blanda quiz</li>
+            <li class="list-group-item">Starta om</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
