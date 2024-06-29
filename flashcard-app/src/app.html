@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bootstrap Example</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-  
-</head>
-<body>
+
+<template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Flashcard-topia</a>
+      <a class="navbar-brand" href="#">Flashcards</a>
       <div >
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
@@ -35,7 +26,7 @@
   <div class="container-fluid m-3">
     <div class="row">
 
-      <div class="col-8 p-3 px-5 bg-secondary">
+      <div class="col-8 p-3 px-5">
         <div class="card text-center mb-3">
           <div class="card-header">
             Fråga x/z
@@ -50,13 +41,13 @@
           <div class="d-grid col text-center">
             <button type="button" class="btn btn-lg btn-primary">Vänd kort</button>
           </div>
-          <div class="col text-center">
+          <div class="d-grid col text-center">
             <button type="button" class="btn btn-lg btn-secondary">Nästa kort</button>
           </div>
         </div>
       </div>
 
-      <div class="col p-3 bg-primary">
+      <div class="col p-3">
         <div class="card" style="width: 18rem;">
           <div class="card-header">
             Inställningar
@@ -73,10 +64,4 @@
     </div>
   </div>
 
-
-  <!-- Bootstrap JS and dependencies -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-</body>
-</html>
+</template>
