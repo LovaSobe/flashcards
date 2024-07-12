@@ -12,6 +12,7 @@
     "sourceMap": true,
     "target": "es5",
     "lib": [
+      "ESNext",
       "es2015",
       "dom"
     ],

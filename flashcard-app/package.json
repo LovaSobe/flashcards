@@ -9,11 +9,16 @@
   "license": "MIT",
   "dependencies": {
     "aurelia-animator-css": "^1.0.4",
-    "aurelia-bootstrapper": "^2.4.0"
+    "aurelia-bootstrapper": "^2.4.0",
+    "aurelia-fetch-client": "^1.8.2",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "mysql2": "^3.10.2",
+    "polyfills": "^2.1.1"
   },
   "devDependencies": {
     "@types/jest": "^29.5.2",
-    "@types/node": "^18.11.18",
+    "@types/node": "^18.19.39",
     "@types/webpack": "^5.28.1",
     "@typescript-eslint/eslint-plugin": "^5.60.1",
     "@typescript-eslint/parser": "^5.60.1",
@@ -40,6 +45,7 @@
     "json-loader": "^0.5.7",
     "mini-css-extract-plugin": "^2.7.6",
     "minimatch": "^5.1.2",
+    "npm-force-resolutions": "^0.0.10",
     "promise-polyfill": "^8.3.0",
     "style-loader": "^3.3.3",
     "tree-kill": "^1.2.2",

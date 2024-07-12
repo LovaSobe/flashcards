@@ -32,6 +32,7 @@ module.exports = ({ production }, { analyze, hmr, port, host }) => ({
     modules: [srcDir, 'node_modules'],
 
     alias: {
+      'lru-cache': path.resolve(__dirname, 'node_modules/mysql2/node_modules/lru-cache'), 
       // https://github.com/aurelia/dialog/issues/387
       // Uncomment next line if you had trouble to run aurelia-dialog on IE11
       // 'aurelia-dialog': path.resolve(__dirname, 'node_modules/aurelia-dialog/dist/umd/aurelia-dialog.js'),
@@ -40,6 +41,14 @@ module.exports = ({ production }, { analyze, hmr, port, host }) => ({
       // Enforce single aurelia-binding, to avoid v1/v2 duplication due to
       // out-of-date dependencies on 3rd party aurelia plugins
       'aurelia-binding': path.resolve(__dirname, 'node_modules/aurelia-binding')
+    },
+    fallback: {
+      "crypto": false,
+      "stream": false,
+      "timers": false,
+      "zlib": false,
+      "net": false,
+      "tls": false
     }
   },
   entry: {
