@@ -1,6 +1,6 @@
-import {HttpClient, json} from 'aurelia-fetch-client';
-  
-let httpClient = new HttpClient();
+import { HttpClient } from 'aurelia-fetch-client';
+
+const httpClient = new HttpClient();
 
 httpClient.configure(config => {
   config
@@ -25,15 +25,4 @@ httpClient.configure(config => {
     });
 });
 
-httpClient
-  .fetch('questions', {
-    method: 'get',
-    body: JSON.stringify({ key: 'value' })
-  })
-  .then(response => response.json())
-  .then(data => {
-    console.log(data);
-  })
-  .catch(error => {
-    alert('Error saving comment!');
-  });
+export { httpClient }; 

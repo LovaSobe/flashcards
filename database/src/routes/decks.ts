@@ -3,51 +3,51 @@
 */ 
 
 import { Router } from "express";
-import { questions } from "../database";
+import { decks } from "../database";
 
 const router = Router(); 
 
-// GET /api/questions/id
+// GET /api/decks/id
 router.get('/:id', async (req, res) => {
     try {
         const id = req.params.id; 
-        const [dbQuestions] = await questions.getAllOne(id); 
-        res.json(dbQuestions); 
+        const [dbDecks] = await decks.getAllOne(id); 
+        res.json(dbDecks); 
     }
     catch (error) {
       res.status(500).json({ error: 'Internal server error' }); 
     }
 }); 
 
-// GET /api/questions
+// GET /api/decks
 router.get('/', async (req, res) => {
     try {
-      const dbQuestions = await questions.getAllQuestions(); 
-      res.json(dbQuestions); 
+      const dbDecks = await decks.getAllDecks(); 
+      res.json(dbDecks); 
     }
     catch (error) {
       res.status(500).json({ error: 'Internal server error' }); 
     }
 }); 
 
-// POST /api/questions { id: number; name: string; email: string; }
+// POST /api/decks { id: number; name: string; email: string; }
 router.post('/', async (req, res) => {
     try {
-        const newQuestion = { ... req.body }; 
-      const dbQuestions = await questions.insert(newQuestion); 
-      res.json(dbQuestions); 
+        const newDeck = { ... req.body }; 
+      const dbDecks = await decks.insert(newDeck); 
+      res.json(dbDecks); 
     }
     catch (error) {
       res.status(500).json({ error: 'Internal server error' }); 
     }
 }); 
 
-// PUT /api/questions/id { question?: string; answer?: string; }
+// PUT /api/decks/id { question?: string; answer?: string; }
 router.get('/:id', async (req, res) => {
     try {
         const id = parseInt(req.params.id, 10); 
-        const updatedQuestion = { ... req.body }; 
-        const result = await questions.update(updatedQuestion, id); 
+        const updatedDecks = { ... req.body }; 
+        const result = await decks.update(updatedDecks, id); 
         res.json(result); 
     }
     catch (error) {
@@ -55,11 +55,11 @@ router.get('/:id', async (req, res) => {
     }
 }); 
 
-// DELETE /api/questions/id 
+// DELETE /api/decks/id 
 router.get('/:id', async (req, res) => {
     try {
         const id = parseInt(req.params.id, 10); 
-        const result = await questions.destroy(id); 
+        const result = await decks.destroy(id); 
         res.json(result); 
     }
     catch (error) {

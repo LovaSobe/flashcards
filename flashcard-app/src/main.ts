@@ -3,6 +3,7 @@ import environment from '../config/environment.json';
 import {PLATFORM} from 'aurelia-pal';
 import 'bootstrap/dist/css/bootstrap.css';
 import { HttpClient } from 'aurelia-fetch-client';
+import { httpClient } from 'services/http-client-config';
 
 if ((module as any).hot) {
   (module as any).hot.accept();
@@ -24,31 +25,6 @@ export function configure(aurelia: Aurelia): void {
     aurelia.use.plugin(PLATFORM.moduleName('aurelia-testing'));
   }
 
-  let httpClient = new HttpClient();
-
-httpClient.configure(config => {
-  config
-    .useStandardConfiguration()
-    .withBaseUrl('http://localhost:8080/api/')
-    .withDefaults({
-      credentials: 'same-origin',
-      headers: {
-        'Accept': 'application/json',
-        'X-Requested-With': 'Fetch'
-      }
-    })
-    .withInterceptor({
-      request(request) {
-        console.log('Requesting ${request.method} ${request.url}')
-        return request;
-      },
-      response(response) {
-        console.log(`Received ${response.status} ${response.url}`);
-        return response; 
-      }
-    });
-});
-
-aurelia.container.registerInstance(HttpClient, httpClient);
+  aurelia.container.registerInstance(HttpClient, httpClient);
   aurelia.start().then(() => aurelia.setRoot(PLATFORM.moduleName('app')));
 }

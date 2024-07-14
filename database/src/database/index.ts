@@ -1,5 +1,7 @@
 import * as questions from './questions'; 
+import * as decks from './decks'; 
 
-export default {
-    questions
+export {
+    questions,
+    decks
 }
