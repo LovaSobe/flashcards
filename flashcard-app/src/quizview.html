@@ -4,9 +4,9 @@
 
       <div class="col-8 p-3 px-5">
         <div class="card text-center mb-3">
-          <div class="card-header" class.bind="turn ? 'bg-secondary' : 'bg-primary'">
+          <h5 class="card-header text-white" class.bind="turn ? 'bg-secondary' : 'bg-primary'">
             ${turn ? 'Svar ' + (index + 1) : 'Fråga ' + (index + 1)}
-          </div>
+          </h5>
           <div class="card-body">
             <h5 class="card-title">${ turn ? questions.answer : questions.question}</h5>
           </div>
