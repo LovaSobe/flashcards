@@ -17,4 +17,4 @@ app.use('/api', apiRouter);
 
 
 const port = 8080; 
-app.listen(port, () => console.log('Server running on ${port}')); 
+app.listen(port, () => console.log(`Server running on ${port}`)); 

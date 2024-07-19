@@ -1,0 +1,41 @@
+<template>
+  <div class="container-fluid m-3">
+    <div class="row">
+
+      <div class="col-8 p-3 px-5">
+        <div class="card text-center mb-3">
+          <div class="card-header" class.bind="turn ? 'bg-secondary' : 'bg-primary'">
+            ${turn ? 'Svar ' + (index + 1) : 'Fråga ' + (index + 1)}
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">${ turn ? questions.answer : questions.question}</h5>
+          </div>
+        </div>
+
+        <div class="row gap-3">
+          <div class="d-grid col text-center">
+            <button type="button" class="btn btn-lg btn-primary" click.delegate=" turn ? turn = false : turn = true">Vänd kort</button>
+          </div>
+          <div class="d-grid col text-center">
+            <button type="button" class="btn btn-lg btn-secondary" click.delegate="next()">Nästa kort</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col p-3">
+        <div class="card" style="width: 18rem;">
+          <div class="card-header">
+            Inställningar
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item btn" click.delegate="removeFromDeck()">Ta bort fråga ur lek</li>
+            <li class="list-group-item btn">Redigera quiz</li>
+            <li class="list-group-item btn" click.delegate="shuffleDeck()">Blanda quiz</li>
+            <li class="list-group-item btn" click.delegate="restart()">Starta om</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</template>

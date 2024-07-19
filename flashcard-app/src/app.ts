@@ -1,47 +1,19 @@
 // src/app.ts
-import { inject } from 'aurelia-framework';
-import { HttpClient } from 'aurelia-fetch-client';
+import { Router, RouterConfiguration } from 'aurelia-router';
+import {PLATFORM} from 'aurelia-pal';
 
-@inject(HttpClient)
 export class App {
-  constructor(private httpClient: HttpClient) {}
+  public questions: any; 
+  public decks: any; 
+  router: Router; 
 
-  attached(): void {
-    this.testHttpClient();
-    this.testHttpClientTwo(); 
+  constructor() {
   }
 
-  async testHttpClient(): Promise<void> {
-    try {
-      const response = await this.httpClient.fetch('questions', {
-        method: 'GET'
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log('Data received:', data);
-      } else {
-        console.error(`HTTP error ${response.status}: ${response.statusText}`);
-      }
-    } catch (error) {
-      console.error('Fetch error:', error);
-    }
-  }
-
-  async testHttpClientTwo(): Promise<void> {
-    try {
-      const response = await this.httpClient.fetch('decks', {
-        method: 'GET'
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log('Data received:', data);
-      } else {
-        console.error(`HTTP error ${response.status}: ${response.statusText}`);
-      }
-    } catch (error) {
-      console.error('Fetch error:', error);
-    }
+  configureRouter(config: RouterConfiguration, router: Router){
+    config.title = 'Flashcards'; 
+    config.map([
+      {route: '', name: 'quiz', moduleId: PLATFORM.moduleName('quizview'), title: 'Quiz'}, 
+    ]); 
   }
 }
