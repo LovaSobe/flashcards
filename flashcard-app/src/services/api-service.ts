@@ -1,4 +1,43 @@
 import { httpClient } from './http-client-config';
+import { NewQuestion } from 'resources/types';
+
+export async function insertQuestion(newQuestion: NewQuestion): Promise<any> {
+  try {
+    const response = await httpClient.fetch('/questions', {
+      method: 'POST',
+      body: JSON.stringify(newQuestion)
+    });
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      throw new Error('Network response was not ok');
+    }
+  } catch (error) {
+    console.error('There was a problem with the fetch operation:', error);
+    throw error;
+  }
+}
+
+export async function deleteQuestion(id: number): Promise<any> {
+  try {
+    const response = await httpClient.fetch('questions/' + id, {
+      method: 'DELETE',
+    });
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      throw new Error('Network response was not ok');
+    }
+  } catch (error) {
+    console.error('There was a problem with the fetch operation:', error);
+    throw error;
+  }
+}
+
+
+
 
 //TODO - BROKEN 
 /* 

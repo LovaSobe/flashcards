@@ -1,0 +1,89 @@
+<template>
+  <div class="p-3" style="height: 90%;">
+    <div class="container-fluid h-100 bg-light rounded pb-2" style="overflow-y: auto;">
+      
+      <div class="row">  
+        <div class="col-auto">
+          <span class="fs-1">
+            Namn på kortlek
+          </span>
+          <span class="fs-5">
+            8 frågor i kortlek
+          </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-auto">
+          <button type="button" class="btn btn-danger">Ta bort kortlek</button>
+          <button type="button" class="btn btn-secondary" click.delegate="GoBack()">Tillbaka</button>          
+        </div>
+      </div>
+
+      <div class="row">
+
+        <div class="col-6 mt-3">  
+          <div class="card">
+            <div class="card-header">
+                <div class="col">Lägg till ny fråga</div>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                
+                <div show.bind="alertError" class="alert alert-danger" role="alert">
+                  ${errorMsg}
+                </div>
+
+                <div class="col">
+
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Fråga</span>
+                    <input value.bind="newQuestion.question" type="text" class="form-control" aria-label="Username">
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Svar</span>
+                    <input value.bind="newQuestion.answer" type="text" class="form-control" aria-label="Username">
+                  </div>
+
+                </div>
+
+                <div class="col-auto text-right d-flex flex-column gap-2">
+                  <button click.delegate="validateAddQuestion()" type="button" class="btn btn-primary">Spara fråga</button>
+                  <button click.delegate="clearFields()" type="button" class="btn btn-primary">Ta bort fråga</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div repeat.for="questions of data" class="col-6 mt-3">  
+          <div class="card">
+            <div class="card-header">
+              <div class="row">
+                <div class="col">${questions.question}</div>
+              </div> 
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  ${questions.answer}
+                </div>
+                <div class="col-auto text-right d-flex flex-column gap-2">
+                  <button type="button" class="btn btn-primary">Redigera</button>
+                  <button type="button" class="btn btn-primary">Ta bort</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      
+      </div>
+        
+
+      
+    </div>
+  </div>
+</template>

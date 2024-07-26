@@ -21,7 +21,7 @@ export function getAllOne(id: string){
     return SelectQuery<IquestionRow>(queryString, [id]); 
 }
 
-export function insert(newQuestion: {id: string, deck_id: string, question: string, answer: string}){
+export function insert(newQuestion: {deck_id: string, question: string, answer: string}){
     const queryString = 'INSERT INTO questions SET ?;'; 
     return ModifyQuery(queryString, [newQuestion]); 
 }
@@ -32,6 +32,7 @@ export function update(updatedQuestion: {question?: string, answer?: string}, id
 }
 
 export function destroy(id: number){
-    const queryString = 'DELETE FROM questions WHERE id = ?'; 
+    const queryString = 'DELETE FROM questions WHERE id = ?;';
+    console.log('Executing query:', queryString, 'with params:', [id]); 
     return ModifyQuery(queryString, [id]); 
 }

@@ -1,8 +1,10 @@
 import { inject } from 'aurelia-framework';
 import { HttpClient } from 'aurelia-fetch-client';
 import { IquestionRow, Colors } from 'resources/types';
+import { Router } from 'aurelia-router';
 
-@inject(HttpClient)
+
+@inject(HttpClient, Router)
 
 export class quizview {
   public questions: any; 
@@ -10,7 +12,7 @@ export class quizview {
   public index: number = 0; 
   public turn = false; 
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private router: Router) {
   }
 
   async attached() {
@@ -79,5 +81,9 @@ export class quizview {
     await this.getQuestions(); 
     this.startOver(); 
   }
+
+    goToRedigera() {
+      this.router.navigateToRoute('edit');
+    }
 
 }

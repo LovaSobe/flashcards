@@ -58,8 +58,9 @@ router.get('/:id', async (req, res) => {
 // DELETE /api/questions/id 
 router.get('/:id', async (req, res) => {
     try {
-        const id = parseInt(req.params.id, 10); 
-        const result = await questions.destroy(id); 
+        const userID = parseInt(req.params.id, 10); 
+        console.log(`Received DELETE request for /questions/${userID}`);
+        const result = await questions.destroy(userID); 
         res.json(result); 
     }
     catch (error) {
