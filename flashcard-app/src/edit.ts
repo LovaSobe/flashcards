@@ -1,7 +1,7 @@
 import { inject } from 'aurelia-framework';
 import { HttpClient } from 'aurelia-fetch-client';
-import { IquestionRow, Colors, NewQuestion } from 'resources/types';
-import { deleteQuestion, insertQuestion } from 'services/api-service';
+import { IquestionRow, IDeckRow, Colors, NewQuestion, updatedQuestion } from 'resources/types';
+import { deleteQuestion, getAllFromDeck, getDeckInfo, insertQuestion, updateQuestion } from 'services/api-service';
 import { Router } from 'aurelia-router';
 
 
@@ -15,18 +15,53 @@ export class quizeditor {
     answer: ''
   }
 
+  updatedQuestion = {
+    question: '', 
+    answer: ''
+  }
+
+  public deckInfo: IDeckRow; 
+
+  public deckID: number; 
   public questions: any; 
   public data: any; 
   public index: number = 0; 
   public alertError: boolean = false; 
   public errorMsg: string = ''; 
+  public editQuestion: boolean = true; 
+  public itemID: number | null = null; 
+  public deckName: string; 
+
+
+  activate(params) {
+    this.deckID = params.id; 
+  }
 
   constructor(private httpClient: HttpClient, private router: Router) {
   }
 
   async attached() {
-    await this.getQuestions(); 
+    await this.getQuestionsFromDeck(this.deckID); 
+    await this.getInfoOfDeck(this.deckID);
     this.questions = this.data[this.index]; 
+  }
+
+  async getQuestionsFromDeck(deck_id: number): Promise<any> {
+    try {
+      const response = await this.httpClient.fetch('questions/' + deck_id, {
+        method: 'GET'
+      });
+
+      if (response.ok) {
+        console.log("INSIDE GET Q FROM DECKS");
+        this.data = await response.json();
+        console.log('Data received:', this.data);
+      } else {
+        console.error(`HTTP error ${response.status}: ${response.statusText}`);
+      }
+    } catch (error) {
+      console.error('Fetch error:', error);
+    }
   }
 
   async getQuestions(): Promise<IquestionRow> {
@@ -58,6 +93,17 @@ export class quizeditor {
     }
   }
 
+  async updateQuestion(id: number): Promise<void> {
+    try {
+      const result = await updateQuestion(this.updatedQuestion, id); 
+      await this.getQuestions(); 
+    } 
+    catch(e){
+      console.error("Error with fetch operation: ", e); 
+      throw e; 
+    }
+  }
+
   //deleteQuestion fungerar ejj. 
   async deleteQuestion(id: number): Promise<void> {
     try {
@@ -69,6 +115,16 @@ export class quizeditor {
       console.log('Error with fetch operation ', e); 
       throw e; 
     }
+  }
+
+  async getInfoOfDeck(deck_id: number){
+   try {
+    this.deckInfo = await getDeckInfo(deck_id); 
+   }
+   catch (e) {
+    console.log('Error with fetch operation ', e); 
+    throw e; 
+   } 
   }
 
   isTextEmpty() {
@@ -103,5 +159,23 @@ export class quizeditor {
 
   GoBack(){
     this.router.navigateToRoute('quiz');
+  }
+
+  startEditing(id: number){
+    this.itemID = id; 
+  }
+
+  stopEditing() {
+    this.itemID = null;  
+  }
+
+  saveEdit(questionID: number){
+    updateQuestion(this.updatedQuestion, questionID); 
+    this.stopEditing(); 
+    this.getQuestions(); 
+  }
+
+  clearEdit(){
+    this.stopEditing(); 
   }
 }

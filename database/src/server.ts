@@ -8,10 +8,12 @@ const cors = require('cors');
 
 const app = express(); 
 
-app.use(cors());
-app.use(cors({
-  origin: 'http://localhost:4200' // Allow only requests from this origin
-}));
+const corsOpt = {
+  origin: 'http://localhost:4200', 
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+
+}
+app.use(cors(corsOpt));
 app.use(express.json());
 app.use('/api', apiRouter); 
 

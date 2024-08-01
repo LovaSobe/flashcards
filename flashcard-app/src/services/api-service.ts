@@ -1,5 +1,5 @@
 import { httpClient } from './http-client-config';
-import { NewQuestion } from 'resources/types';
+import { NewQuestion, updatedQuestion } from 'resources/types';
 
 export async function insertQuestion(newQuestion: NewQuestion): Promise<any> {
   try {
@@ -19,10 +19,11 @@ export async function insertQuestion(newQuestion: NewQuestion): Promise<any> {
   }
 }
 
-export async function deleteQuestion(id: number): Promise<any> {
+export async function updateQuestion(updatedQuestion: updatedQuestion, id: number): Promise<any> {
   try {
     const response = await httpClient.fetch('questions/' + id, {
-      method: 'DELETE',
+      method: 'PUT',
+      body: JSON.stringify(updatedQuestion)
     });
     if (response.ok) {
       const data = await response.json();
@@ -35,6 +36,61 @@ export async function deleteQuestion(id: number): Promise<any> {
     throw error;
   }
 }
+
+export async function deleteQuestion(id: number): Promise<any> {
+  try {
+    const response = await httpClient.fetch('questions/' + id, {
+      method: 'DELETE',
+      body: JSON.stringify({ data: id }),
+    });
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      throw new Error('Network response was not ok');
+    }
+  } catch (error) {
+    console.error('There was a problem with the fetch operation:', error);
+    throw error;
+  }
+}
+
+export async function getAllFromDeck(deck_id: number): Promise<any> {
+  try {
+    const response = await httpClient.fetch('questions/' + deck_id, {
+      method: 'GET'
+    });
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      throw new Error('Network response was not ok');
+    }
+  } catch (error) {
+    console.error('There was a problem with the fetch operation:', error);
+    throw error;
+  }
+}
+
+export async function getDeckInfo(deck_id: number) {
+  try{
+    const response = await httpClient.fetch('decks/' + deck_id, {
+      method: 'GET'
+    }); 
+    if(response.ok){
+      const result = await response.json(); 
+      return result; 
+    }
+    else {
+      throw new Error('Network response was not ok') ;
+    }
+  }
+  catch(e) {
+    console.error('There was a problem with the fetch operation: ', e); 
+    throw e; 
+  }
+}
+
 
 
 

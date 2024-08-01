@@ -82,8 +82,8 @@ export class quizview {
     this.startOver(); 
   }
 
-    goToRedigera() {
-      this.router.navigateToRoute('edit');
+    goToRedigera(deck_id: number) {
+      this.router.navigateToRoute('edit', {id: deck_id});
     }
 
 }

@@ -15,10 +15,15 @@ export interface IquestionRow extends RowDataPacket {
 export function getAllQuestions(){
     return SelectQuery<IquestionRow>('SELECT * FROM questions;'); 
 }
-
+/* 
 export function getAllOne(id: string){
-    const queryString = 'SELECT * FROM questions WHERE id = ?;'; 
+    const queryString = 'SELECT * FROM questions WHERE deck_id = ?;'; 
     return SelectQuery<IquestionRow>(queryString, [id]); 
+} */ 
+
+export function getAllFromDeck(deck_id: string){
+    const queryString = 'SELECT * FROM questions WHERE deck_id = ?'
+    return SelectQuery<IquestionRow>(queryString, [deck_id]); 
 }
 
 export function insert(newQuestion: {deck_id: string, question: string, answer: string}){

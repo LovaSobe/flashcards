@@ -5,7 +5,7 @@
       <div class="row">  
         <div class="col-auto">
           <span class="fs-1">
-            Namn på kortlek
+            ${deckInfo.name}
           </span>
           <span class="fs-5">
             8 frågor i kortlek
@@ -62,20 +62,53 @@
           <div class="card">
             <div class="card-header">
               <div class="row">
-                <div class="col">${questions.question}</div>
+                <div value.bind="updatedQuestion.question" class="col">${questions.question} </div>
               </div> 
             </div>
+
+
             <div class="card-body">
-              <div class="row">
-                <div class="col">
-                  ${questions.answer}
+
+              <!-- CARD WITH EDIT QUESTION + ANSWER + SAVE/ CANCEL BUTTON, SHOWN IF IN EDIT MODE -->
+             <div class="row" show.bind="itemID === questions.id">
+
+              <div class="col">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Fråga</span>
+                    <input 
+                      value.bind="updatedQuestion.question" 
+                      type="text" 
+                      class="form-control" 
+                      aria-label="Username"
+                      placeholder="${questions.question}">
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Svar</span>
+                    <input 
+                     value.bind="updatedQuestion.answer" 
+                     type="text" 
+                     class="form-control" 
+                     aria-label="Username"
+                     placeholder="${questions.answer}">
+                  </div>
                 </div>
+          
                 <div class="col-auto text-right d-flex flex-column gap-2">
-                  <button type="button" class="btn btn-primary">Redigera</button>
-                  <button type="button" class="btn btn-primary">Ta bort</button>
+                  <button click.delegate="saveEdit(questions.id)" type="button" class="btn btn-success">Spara fråga</button>
+                  <button click.delegate="clearEdit()" type="button" class="btn btn-secondary">Avbryt</button>
+                </div>
+              </div>
+
+              <!-- CARD WITH QUESTION-INFO + EDIT/ REMOVE BUTTON, SHOWN IF NOT IN EDIT MODE (DEFAULT) -->
+              <div class="row" show.bind="itemID !== questions.id">
+                <div class="col">${questions.answer}</div>
+                <div class="col-auto text-right d-flex flex-column gap-2">
+                  <button click.delegate="startEditing(questions.id)" type="button" class="btn btn-primary">Redigera</button>
+                  <button click.delegate="deleteQuestion()" type="button" class="btn btn-primary">Ta bort</button>
                 </div>
               </div>
             </div>
+
           </div>
         </div>
 
