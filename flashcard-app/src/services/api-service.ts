@@ -55,6 +55,23 @@ export async function deleteQuestion(id: number): Promise<any> {
   }
 }
 
+export async function removeDeck(deck_id: number): Promise<any> {
+  try{
+    const response = await httpClient.fetch('decks/' + deck_id, {
+      method: 'DELETE',
+      body: JSON.stringify({ data: deck_id })
+    }); 
+    if(response.ok) {
+      const result = await response.json(); 
+      return result; 
+    }
+  }
+  catch(e){
+    console.error('There was a problem with the fetch operation: ', e); 
+    throw e; 
+  }
+}
+
 export async function getAllFromDeck(deck_id: number): Promise<any> {
   try {
     const response = await httpClient.fetch('questions/' + deck_id, {

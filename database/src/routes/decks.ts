@@ -56,10 +56,10 @@ router.get('/:id', async (req, res) => {
 }); 
 
 // DELETE /api/decks/id 
-router.get('/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
-        const id = parseInt(req.params.id, 10); 
-        const result = await decks.destroy(id); 
+        const deck_id = parseInt(req.params.id, 10); 
+        const result = await decks.destroy(deck_id); 
         res.json(result); 
     }
     catch (error) {

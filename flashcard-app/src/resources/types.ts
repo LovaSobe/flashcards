@@ -11,7 +11,7 @@ export interface IDeckRow {
 }
 
 export interface NewQuestion {
-  deck_id: string;
+  deck_id: number;
   question: string;
   answer: string;
 }

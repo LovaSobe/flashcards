@@ -11,25 +11,30 @@ export class quizview {
   public data: any; 
   public index: number = 0; 
   public turn = false; 
+  public deckID: number; 
 
   constructor(private httpClient: HttpClient, private router: Router) {
   }
 
+  activate(params) {
+    this.deckID = params.id; 
+  }
+
+
   async attached() {
-    await this.getQuestions(); 
+    await this.getQuestionsFromDeck(this.deckID); 
     this.questions = this.data[this.index]; 
   }
 
-  async getQuestions(): Promise<IquestionRow> {
+  async getQuestionsFromDeck(deck_id: number): Promise<any> {
     try {
-      const response = await this.httpClient.fetch('questions', {
+      const response = await this.httpClient.fetch('questions/' + deck_id, {
         method: 'GET'
       });
 
       if (response.ok) {
         this.data = await response.json();
         console.log('Data received:', this.data);
-        return this.data; 
       } else {
         console.error(`HTTP error ${response.status}: ${response.statusText}`);
       }
@@ -78,7 +83,7 @@ export class quizview {
   }
 
   async restart(){
-    await this.getQuestions(); 
+    await this.getQuestionsFromDeck(this.deckID);    
     this.startOver(); 
   }
 

@@ -1,0 +1,81 @@
+<template>
+  <div class="p-3" style="height: 90%;">
+    <div class="container-fluid h-100 bg-light rounded pb-2" style="overflow-y: auto;">
+      <div class="row">
+        <div class="col-6 mt-2">
+          <h1>Skapa en ny kortlek</h1>
+          <div class="card mt-3">
+            <div class="card-header">
+                <div class="col">Lägg till ny fråga</div>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                
+                <div show.bind="alertError" class="alert alert-danger" role="alert">
+                  ${errorMsg}
+                </div>
+
+                <div class="col">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Namn</span>
+                    <input 
+                      value.bind="newQuestion.question" 
+                      type="text" 
+                      class="form-control" 
+                      aria-label="Username"
+                      placeholder="Namn på din nya kortlek">
+                  </div>
+                </div>
+
+                <div class="col-auto col">
+                  <button click.delegate="validateAddQuestion()" type="button" class="btn btn-primary">Skapa kortlek</button>
+                </div>
+              </div>
+            </div>
+          </div> 
+
+          <div class="card my-3">
+            <div class="card-body">
+              <h3>Flashcards</h3>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+              Nullam ultricies commodo elit, a euismod dui euismod et. 
+              Phasellus ex dui, tincidunt sed ligula sit amet, luctus aliquam mi. 
+              Nulla et mi aliquet, faucibus purus vitae, vulputate nulla. 
+              In sit amet augue vehicula neque cursus vehicula quis non turpis. 
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="col-6 mt-2">
+          <h1>Befintliga kortlekar</h1>
+          
+          <div class="col mt-3" style="overflow-y: auto;">
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  
+                  <div show.bind="alertError" class="alert alert-danger" role="alert">
+                    ${errorMsg}
+                  </div>
+  
+                  <div class="col">
+                    <h3>Namn på kortlek</h3>
+                    <p>X antal frågor</p>
+                  </div>
+  
+                  <div class="col-auto text-right d-flex flex-column gap-2">
+                    <button click.delegate="validateAddQuestion()" type="button" class="btn btn-primary">Spela</button>
+                    <button click.delegate="clearFields()" type="button" class="btn btn-primary">Redigera</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

@@ -38,6 +38,5 @@ export function update(updatedQuestion: {question?: string, answer?: string}, id
 
 export function destroy(id: number){
     const queryString = 'DELETE FROM questions WHERE id = ?;';
-    console.log('Executing query:', queryString, 'with params:', [id]); 
     return ModifyQuery(queryString, [id]); 
 }

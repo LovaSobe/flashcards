@@ -13,7 +13,8 @@ export class App {
   configureRouter(config: RouterConfiguration, router: Router){
     config.title = 'Flashcards'; 
     config.map([
-      {route: '', name: 'quiz', moduleId: PLATFORM.moduleName('quizview'), title: 'Quiz'}, 
+      {route: '', name: 'home', moduleId: PLATFORM.moduleName('home'), title: 'Hem'}, 
+      {route: 'quiz/:id', name: 'quiz', moduleId: PLATFORM.moduleName('quizview'), title: 'Quiz'}, 
       {route: 'edit/:id', name: 'edit', moduleId: PLATFORM.moduleName('edit'), title: 'Quiz editor'}, 
       {route: ':slug', name: 'notFound', moduleId: PLATFORM.moduleName('resources/notFound'), title: 'View Post'}, 
     ]); 
