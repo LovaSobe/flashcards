@@ -1,11 +1,11 @@
 <template>
   <div class="p-3" style="height: 90%;">
     <div class="container-fluid h-100 bg-light rounded pb-2" style="overflow-y: auto;">
-      <div class="row">
-        <div class="col-6 mt-2">
-          <h1>Skapa en ny kortlek</h1>
+      <div class="row justify-content-around">
+        <div class="col-5 mt-2">
+          <h1 style.bind="heading">Skapa en ny kortlek</h1>
           <div class="card mt-3">
-            <div class="card-header">
+            <div class="card-header" style="background-color: #C63D2F; color: wheat">
                 <div class="col">Lägg till ny fråga</div>
             </div>
             <div class="card-body">
@@ -19,7 +19,7 @@
                   <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Namn</span>
                     <input 
-                      value.bind="newQuestion.question" 
+                      value.bind="newDeck.name" 
                       type="text" 
                       class="form-control" 
                       aria-label="Username"
@@ -28,20 +28,29 @@
                 </div>
 
                 <div class="col-auto col">
-                  <button click.delegate="validateAddQuestion()" type="button" class="btn btn-primary">Skapa kortlek</button>
+                  <button 
+                    click.delegate="validateAddDeck()" 
+                    type="button" 
+                    class="btn btn-primary"
+                    >Skapa kortlek</button>
                 </div>
               </div>
             </div>
           </div> 
 
           <div class="card my-3">
-            <div class="card-body">
-              <h3>Flashcards</h3>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-              Nullam ultricies commodo elit, a euismod dui euismod et. 
-              Phasellus ex dui, tincidunt sed ligula sit amet, luctus aliquam mi. 
-              Nulla et mi aliquet, faucibus purus vitae, vulputate nulla. 
-              In sit amet augue vehicula neque cursus vehicula quis non turpis. 
+            <div class="card-body rounded">
+              <h3 style.bind="heading">Flashcards</h3>
+              Flashcards blandar traditionell studieteknik tillsammans med teknologi som tillsammans 
+               möjliggör studier på den tid och plats som passar just dig, oavsätt om du är den flitiga studenten eller nyfikne som vill lära sig nya saker. 
+
+               Såhär fungerar Flashcards: 
+               <ul style="list-style: none;">
+                <li><b style="color: #FE7A36">Skapa kortlekar:</b> </li> Skräddarsy dina egna kortlekar med frågor och svar som passar just dig och dina individuella behov.
+                <li><b style="color: #FE7A36">Studera:</b> </li> Spela och studera med en kortlek! När du studerar med hjälp av en flashcard kortlek så syns ett kort med en fråga i taget, 
+                när du är redo kan du antingen vända på kortet och se svaret och gå vidare till nästa fråga.
+                <li><b style="color: #FE7A36">Anpassa studieupplevelsen:</b> </li> För att göra din studieupplevelse så effektiv som möjligt kan du blanda om kortleken, och temporärt ta ut de kort som du känner att du kan. 
+               </ul>
             </div>
           </div>
 
@@ -49,9 +58,9 @@
 
 
         <div class="col-6 mt-2">
-          <h1>Befintliga kortlekar</h1>
+          <h1 style.bind="heading">Befintliga kortlekar</h1>
           
-          <div class="col mt-3" style="overflow-y: auto;">
+          <div repeat.for="deck of decks" class="col mt-3" style="overflow-y: auto;">
             <div class="card">
               <div class="card-body">
                 <div class="row">
@@ -61,13 +70,14 @@
                   </div>
   
                   <div class="col">
-                    <h3>Namn på kortlek</h3>
-                    <p>X antal frågor</p>
+                    <h3>${deck.name}</h3>
+                    <hr style="color: #C63D2F"/>
+                    <p>${getNumberOfQuestions(deck.id)} antal frågor</p>
                   </div>
   
                   <div class="col-auto text-right d-flex flex-column gap-2">
-                    <button click.delegate="validateAddQuestion()" type="button" class="btn btn-primary">Spela</button>
-                    <button click.delegate="clearFields()" type="button" class="btn btn-primary">Redigera</button>
+                    <button click.delegate="playGame(deck.id)" type="button" class="btn btn-primary">Spela</button>
+                    <button click.delegate="goToRedigera(deck.id)" type="button" class="btn btn-primary">Redigera</button>
                   </div>
                 </div>
               </div>

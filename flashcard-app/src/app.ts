@@ -1,13 +1,18 @@
 // src/app.ts
 import { Router, RouterConfiguration } from 'aurelia-router';
 import {PLATFORM} from 'aurelia-pal';
+import { headingFont } from 'resources/types';
 
 export class App {
   public questions: any; 
   public decks: any; 
+  public heading: string; 
+  public links: string; 
   router: Router; 
 
   constructor() {
+    this.heading = headingFont.headingOrange; 
+    this.links = headingFont.headingLink; 
   }
 
   configureRouter(config: RouterConfiguration, router: Router){

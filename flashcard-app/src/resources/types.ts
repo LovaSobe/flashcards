@@ -16,6 +16,10 @@ export interface NewQuestion {
   answer: string;
 }
 
+export interface NewDeck {
+  name: string; 
+}
+
 export interface updatedQuestion {
   question: string | null;
   answer: string | null;
@@ -30,6 +34,11 @@ export const Colors = {
   dark: '#95E1D3'
 
 }
+
+export const headingFont = {
+  headingOrange: 'font-family: Concert One, sans-serif; font-weight: 400; font-style: normal; color: #FE7A36',
+  headingLink: 'font-family: Concert One, sans-serif; font-weight: 400; font-style: normal; color: #FE7A36'
+} 
 
 
 /* 

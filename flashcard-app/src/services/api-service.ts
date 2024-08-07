@@ -1,5 +1,5 @@
 import { httpClient } from './http-client-config';
-import { NewQuestion, updatedQuestion } from 'resources/types';
+import { NewDeck, NewQuestion, updatedQuestion } from 'resources/types';
 
 export async function insertQuestion(newQuestion: NewQuestion): Promise<any> {
   try {
@@ -16,6 +16,26 @@ export async function insertQuestion(newQuestion: NewQuestion): Promise<any> {
   } catch (error) {
     console.error('There was a problem with the fetch operation:', error);
     throw error;
+  }
+}
+
+export async function insertDeck(newDeck: NewDeck): Promise<any>{
+  try {
+    const response = await httpClient.fetch('decks', {
+      method: 'POST', 
+      body: JSON.stringify(newDeck)
+    }); 
+    if(response.ok){
+      const data = await response.json(); 
+      return data; 
+    }
+    else {
+      throw new Error('Network response was not ok'); 
+    }
+  }
+  catch(e) {
+    console.error('There was a problem with the fetch operation: ', e); 
+    throw e; 
   }
 }
 
@@ -105,6 +125,24 @@ export async function getDeckInfo(deck_id: number) {
   catch(e) {
     console.error('There was a problem with the fetch operation: ', e); 
     throw e; 
+  }
+}
+
+export async function getAllDecks(){
+  try {
+    const response = await httpClient.fetch('decks/', {
+      method: 'GET'
+    }); 
+    if(response.ok){
+      const result = await response.json(); 
+      return result; 
+    }
+    else {
+      throw new Error('Network response not ok'); 
+    }
+  }
+  catch(e) {
+    console.error('There was a problem with the fetch operation ', e); 
   }
 }
 

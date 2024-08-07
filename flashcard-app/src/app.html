@@ -2,22 +2,22 @@
 <template>
   <nav 
     class="navbar navbar-expand-lg navbar-light bg-light"
-    style="background-color: #E25E3E;">
+    style.bind="heading">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Flashcards</a>
+      <a style.bind="heading" style="font-size: 3.5rem" class="navbar-brand h1" href="#">Flashcards</a>
       <div >
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="#">Hem</a>
+            <a style.bind="links" style="font-size: 1.5rem" class="nav-link" href="#">Hem</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Mina Quiz</a>
+            <a style.bind="links" style="font-size: 1.5rem" class="nav-link" href="#">Mina Quiz</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Bibliotek</a>
+            <a style.bind="links" style="font-size: 1.5rem" class="nav-link" href="#">Bibliotek</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Nytt quiz</a>
+            <a style.bind="heading" style="font-size: 1.5rem" class="nav-link" href="#">Nytt quiz</a>
           </li>
         </ul>
       </div>
