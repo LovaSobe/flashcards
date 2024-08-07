@@ -21,6 +21,7 @@ export class App {
       {route: '', name: 'home', moduleId: PLATFORM.moduleName('home'), title: 'Hem'}, 
       {route: 'quiz/:id', name: 'quiz', moduleId: PLATFORM.moduleName('quizview'), title: 'Quiz'}, 
       {route: 'edit/:id', name: 'edit', moduleId: PLATFORM.moduleName('edit'), title: 'Quiz editor'}, 
+      {route: 'library', name: 'library', moduleId: PLATFORM.moduleName('library'), title: 'Mina Quiz'}, 
       {route: ':slug', name: 'notFound', moduleId: PLATFORM.moduleName('resources/notFound'), title: 'View Post'}, 
     ]); 
   }

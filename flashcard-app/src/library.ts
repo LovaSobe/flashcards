@@ -6,7 +6,7 @@ import { NewDeck, headingFont } from "resources/types";
 
 @inject(HttpClient, Router)
 
-export class home {
+export class library {
 
   public heading: string; 
   public decks: any; 
@@ -15,17 +15,9 @@ export class home {
   public errorMsg: string; 
   public alertError: boolean = false;  
   public newDeck: NewDeck; 
-  public myMargin: string; 
-  public myButton: string; 
-  public secondaryButton: string; 
-  public secondaryHeading: string; 
 
   constructor(private httpClient: HttpClient, private router: Router){
     this.heading = headingFont.headingOrange; 
-    this.myMargin = headingFont.bigMargins; 
-    this.myButton = headingFont.buttonStyling; 
-    this.secondaryButton = headingFont.secondaryButton; 
-    this.secondaryHeading = headingFont.secondaryColor; 
   }
 
   async attached(){

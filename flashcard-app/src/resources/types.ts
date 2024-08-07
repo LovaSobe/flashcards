@@ -37,10 +37,14 @@ export const Colors = {
 
 export const headingFont = {
   headingOrange: 'font-family: Concert One, sans-serif; font-weight: 400; font-style: normal; color: #FE7A36',
-  headingLink: 'font-family: Concert One, sans-serif; font-weight: 400; font-style: normal; color: #FE7A36'
+  headingLink: 'font-family: Concert One, sans-serif; font-weight: 400; font-style: normal; color: #FE7A36',
+  secondaryColor: 'font-family: Concert One, sans-serif; font-weight: 400; font-style: normal; color: #3652AD',
+  bigMargins: 'margin-top: 20vh; margin-bottom:20vh;',
+  buttonStyling: 'border: none; background-color: #FE7A36; font-family: Bebas Neue, sans-serif; font-weight:400, font-style: normal;',
+  secondaryButton: 'border: medium solid #3652AD; color: #3652AD; background-color: white; font-family: Bebas Neue, sans-serif; font-weight:400, font-style: normal;'
 } 
 
-
+// font-family: Bebas Neue, sans-serif; font-weight: 400;'
 /* 
 FFBB5C
 FF9B50
