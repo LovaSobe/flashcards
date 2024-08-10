@@ -15,9 +15,15 @@ export class library {
   public errorMsg: string; 
   public alertError: boolean = false;  
   public newDeck: NewDeck; 
+  public mainButton: string; 
+  public myMargins: string; 
+  public secondaryHeading; 
 
   constructor(private httpClient: HttpClient, private router: Router){
     this.heading = headingFont.headingOrange; 
+    this.mainButton = headingFont.buttonStyling; 
+    this.myMargins = headingFont.mediumMargins; 
+    this.secondaryHeading = headingFont.secondaryColor;
   }
 
   async attached(){
@@ -71,21 +77,5 @@ export class library {
   playGame(deck_id: number){
     this.router.navigateToRoute('quiz', {id: deck_id})
   }
-
 }
 
-
-/* 
-- Det går att klicka på redigera
-- Det går att klicka på hem
-- Om användaren skriver in namn går det att skapa ett nytt deck
-- började exprimentera med färger
-- försökte se hur många objekt som finns i min JSON men ICKE 
-
-BEHÖVER GÖRAS: 
-- ta id från nyskapade deck och gå till redigera
-- validate fungerar inte ??? 
-- endast höger sida ska skrolla
-- antal frågor i varje deck 
-
-*/ 

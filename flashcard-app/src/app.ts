@@ -8,11 +8,15 @@ export class App {
   public decks: any; 
   public heading: string; 
   public links: string; 
+  public bgColor: string; 
+  public marginNav: string; 
   router: Router; 
 
   constructor() {
     this.heading = headingFont.headingOrange; 
     this.links = headingFont.headingLink; 
+    this.bgColor = headingFont.bgBlue;
+    this.marginNav = headingFont.marginNavigation; 
   }
 
   configureRouter(config: RouterConfiguration, router: Router){

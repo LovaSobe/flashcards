@@ -4,19 +4,16 @@
       
       <div class="row">  
         <div class="col-auto">
-          <span class="fs-1">
+          <span style.bind="secondaryFont" class="fs-1">
             ${deckInfo.name}
-          </span>
-          <span class="fs-5">
-            8 frågor i kortlek
           </span>
         </div>
       </div>
 
       <div class="row">
         <div class="col-auto">
-          <button type="button" class="btn btn-danger" click.delegate="validateDeleteDeck()">Ta bort kortlek</button>
-          <button type="button" class="btn btn-secondary" click.delegate="GoBack()">Tillbaka</button>          
+          <button style.bind="darkButton" type="button" class="btn btn-danger" click.delegate="validateDeleteDeck()">Ta bort kortlek</button>
+          <button style.bind="secondaryButton" type="button" class="btn btn-secondary" click.delegate="GoBack()">Tillbaka</button>          
         </div>
       </div>
 
@@ -24,7 +21,7 @@
 
         <div class="col-6 mt-3">  
           <div class="card">
-            <div class="card-header">
+            <div class="card-header" style.bind="mainButton">
                 <div class="col">Lägg till ny fråga</div>
             </div>
             <div class="card-body">
@@ -49,8 +46,8 @@
                 </div>
 
                 <div class="col-auto text-right d-flex flex-column gap-2">
-                  <button click.delegate="validateAddQuestion()" type="button" class="btn btn-primary">Spara fråga</button>
-                  <button click.delegate="clearFields()" type="button" class="btn btn-primary">Ta bort fråga</button>
+                  <button style.bind="mainButton" click.delegate="validateAddQuestion()" type="button" class="btn btn-primary">Spara fråga</button>
+                  <button style.bind="orangeSecondary" click.delegate="clearFields()" type="button" class="btn btn-primary">Ta bort fråga</button>
                 </div>
               </div>
             </div>
@@ -60,7 +57,7 @@
 
         <div repeat.for="questions of data" class="col-6 mt-3">  
           <div class="card">
-            <div class="card-header">
+            <div class="card-header" style.bind="blueBG">
               <div class="row">
                 <div value.bind="updatedQuestion.question" class="col">${questions.question} </div>
               </div> 
@@ -103,8 +100,8 @@
               <div class="row" show.bind="itemID !== questions.id">
                 <div class="col">${questions.answer}</div>
                 <div class="col-auto text-right d-flex flex-column gap-2">
-                  <button click.delegate="startEditing(questions.id)" type="button" class="btn btn-primary">Redigera</button>
-                  <button click.delegate="deleteQuestion(questions.id)" type="button" class="btn btn-primary">Ta bort</button>
+                  <button style.bind="darkButton" click.delegate="startEditing(questions.id)" type="button" class="btn btn-primary">Redigera</button>
+                  <button style.bind="secondaryButton" click.delegate="deleteQuestion(questions.id)" type="button" class="btn btn-primary">Ta bort</button>
                 </div>
               </div>
             </div>

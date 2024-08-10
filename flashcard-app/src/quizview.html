@@ -1,30 +1,39 @@
 <template>
   <div class="container-fluid m-3">
+    
+    <div class="row" style="margin-top: 6rem; margin-bottom: 1rem;">  
+      <div class="col-auto px-5">
+        <span class="fs-1" style.bind="secondaryFont">
+          ${deckInfo.name} 
+        </span>
+      </div>
+    </div>
+
     <div class="row">
 
-      <div class="col-8 p-3 px-5">
+      <div class="col-8 p-3 px-5" >
         <div class="card text-center mb-3">
-          <h5 class="card-header text-white" class.bind="turn ? 'bg-secondary' : 'bg-primary'">
+          <h5 class="card-header text-white" style.bind="{ backgroundColor: turn ? '#3652AD' : '#FE7A36'}">
             ${turn ? 'Svar ' + (index + 1) : 'Fråga ' + (index + 1)}
           </h5>
-          <div class="card-body">
+          <div class="card-body p-5 m-5">
             <h5 class="card-title">${ turn ? questions.answer : questions.question}</h5>
           </div>
         </div>
 
-        <div class="row gap-3">
+        <div class="row gap-3" style="margin-top: 3rem;">
           <div class="d-grid col text-center">
-            <button type="button" class="btn btn-lg btn-primary" click.delegate=" turn ? turn = false : turn = true">Vänd kort</button>
+            <button style.bind="mainBtn" type="button" class="btn btn-lg btn-primary"  click.delegate=" turn ? turn = false : turn = true">Vänd kort</button>
           </div>
           <div class="d-grid col text-center">
-            <button type="button" class="btn btn-lg btn-secondary" click.delegate="next()">Nästa kort</button>
+            <button style.bind="secondaryBtn" type="button" class="btn btn-lg btn-secondary"  click.delegate="next()">Nästa kort</button>
           </div>
         </div>
       </div>
 
       <div class="col p-3">
-        <div class="card" style="width: 18rem;">
-          <div class="card-header">
+        <div class="card" style="width: 18rem; background-color:#E9F6FF;">
+          <div style.bind="secondaryFont" class="card-header">
             Inställningar
           </div>
           <ul class="list-group list-group-flush">

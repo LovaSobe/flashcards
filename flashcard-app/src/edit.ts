@@ -1,6 +1,6 @@
 import { inject } from 'aurelia-framework';
 import { HttpClient } from 'aurelia-fetch-client';
-import { IquestionRow, IDeckRow, NewQuestion } from 'resources/types';
+import { IquestionRow, IDeckRow, NewQuestion, headingFont } from 'resources/types';
 import { deleteQuestion, getDeckInfo, insertQuestion, updateQuestion, removeDeck } from 'services/api-service';
 import { Router } from 'aurelia-router';
 
@@ -23,6 +23,16 @@ export class quizeditor {
   public editQuestion: boolean = true; 
   public itemID: number | null = null; 
   public deckName: string; 
+  
+  public mainFont: string; 
+  public secondaryFont: string; 
+  public blueBG: string; 
+  public myMargins: string; 
+  public mainButton: string; 
+  public secondaryButton: string; 
+  public darkButton: string; 
+  public orangeSecondary: string; 
+  public blueBorder: string; 
 
 
   activate(params) {
@@ -30,6 +40,14 @@ export class quizeditor {
   }
 
   constructor(private httpClient: HttpClient, private router: Router) {
+    this.mainFont = headingFont.headingOrange; 
+    this.secondaryFont = headingFont.secondaryColor; 
+    this.blueBG = headingFont.bgBlue; 
+    this.mainButton = headingFont.buttonStyling; 
+    this.secondaryButton = headingFont.secondaryButton; 
+    this.darkButton = headingFont.strongBlueBtn;
+    this.orangeSecondary = headingFont.orangeSecondary; 
+    this.blueBorder = headingFont.blueBorder;
   }
 
   async attached() {

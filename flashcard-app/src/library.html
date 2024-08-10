@@ -1,66 +1,21 @@
 <template>
   <div class="p-3" style="height: 90%;">
     <div class="container-fluid h-100 bg-light rounded pb-2" style="overflow-y: auto;">
-      <div class="row justify-content-around">
-        <div class="col-5 mt-2">
-          <h1 style.bind="heading">Skapa en ny kortlek</h1>
-          <div class="card mt-3">
-            <div class="card-header" style="background-color: #C63D2F; color: wheat">
-                <div class="col">Lägg till ny fråga</div>
-            </div>
-            <div class="card-body">
-              <div class="row">
-                
-                <div show.bind="alertError" class="alert alert-danger" role="alert">
-                  ${errorMsg}
-                </div>
+      <div class="row justify-content-center" style.bind="myMargins">
+        <h1 style.bind="heading" class="text-center">Klara, Färdiga, Skapa!</h1>
+        <h5 class="text-center">Stärk ditt minne med varje kort! <br> Skapa din nya, personliga korlek och ta dina studier till nästa nivå. </h5>
+        <button style.bind="mainButton" style="font-size: 2rem;" type="button" class="w-auto btn btn-primary btn-lg">Skapa ny kortlek</button>
+      </div>
 
-                <div class="col">
-                  <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Namn</span>
-                    <input 
-                      value.bind="newDeck.name" 
-                      type="text" 
-                      class="form-control" 
-                      aria-label="Username"
-                      placeholder="Namn på din nya kortlek">
-                  </div>
-                </div>
-
-                <div class="col-auto col">
-                  <button 
-                    click.delegate="validateAddDeck()" 
-                    type="button" 
-                    class="btn btn-primary"
-                    >Skapa kortlek</button>
-                </div>
-              </div>
-            </div>
-          </div> 
-
-          <div class="card my-3">
-            <div class="card-body rounded">
-              <h3 style.bind="heading">Flashcards</h3>
-              Flashcards blandar traditionell studieteknik tillsammans med teknologi som tillsammans 
-               möjliggör studier på den tid och plats som passar just dig, oavsätt om du är den flitiga studenten eller nyfikne som vill lära sig nya saker. 
-
-               Såhär fungerar Flashcards: 
-               <ul style="list-style: none;">
-                <li><b style="color: #FE7A36">Skapa kortlekar:</b> </li> Skräddarsy dina egna kortlekar med frågor och svar som passar just dig och dina individuella behov.
-                <li><b style="color: #FE7A36">Studera:</b> </li> Spela och studera med en kortlek! När du studerar med hjälp av en flashcard kortlek så syns ett kort med en fråga i taget, 
-                när du är redo kan du antingen vända på kortet och se svaret och gå vidare till nästa fråga.
-                <li><b style="color: #FE7A36">Anpassa studieupplevelsen:</b> </li> För att göra din studieupplevelse så effektiv som möjligt kan du blanda om kortleken, och temporärt ta ut de kort som du känner att du kan. 
-               </ul>
-            </div>
-          </div>
-
-        </div>
-
-
-        <div class="col-6 mt-2">
-          <h1 style.bind="heading">Befintliga kortlekar</h1>
-          
-          <div repeat.for="deck of decks" class="col mt-3" style="overflow-y: auto;">
+      <div class="row">        
+        <h1 style.bind="secondaryHeading">Mina kortlekar</h1>
+      </div>
+      <div class="col-11 justify-content-center">
+      </div>
+      
+      
+      <div class="row">          
+          <div repeat.for="deck of decks" class="col-6 mt-3" style="overflow-y: auto;">
             <div class="card">
               <div class="card-body">
                 <div class="row">
@@ -72,7 +27,7 @@
                   <div class="col">
                     <h3>${deck.name}</h3>
                     <hr style="color: #C63D2F"/>
-                    <p>${getNumberOfQuestions(deck.id)} antal frågor</p>
+                    <p>x antal frågor</p>
                   </div>
   
                   <div class="col-auto text-right d-flex flex-column gap-2">
@@ -82,9 +37,7 @@
                 </div>
               </div>
             </div>
-        </div>
-
-        </div>
+          </div>
       </div>
     </div>
   </div>
